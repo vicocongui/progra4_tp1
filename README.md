@@ -3,6 +3,7 @@
 ## Metodologia
 
 Integrantes por equipo: 1
+
 Se aprueba con:         6
 
 ### Objetivos
@@ -27,6 +28,8 @@ Todos los ejercicios van a ser ejecutables en consola nada mas. Usando, por ejem
 
 Pueden asumir cosas que no estan aclaradas explicitamente. De hecho, espero que lo hagan. Hice a proposito los enunciados un poco ambiguos. Si igualmente tienen dudas, pregunten.
 
+Recuerden que, por lo general, la solucion mas simple es la mejor.
+
 ----
 
 ## Entrega
@@ -37,7 +40,7 @@ Todo lo van a resolver en un repositorio de GitHub. Pueden forkear este mismo o 
 
 La fecha limite es el Jueves 4 de Abril de 2024 a las 23:59 hs. Antes de ese horario me tienen que mandar el link del repo por mail a <me@diegofreijo.com>.
 
-Tiene que haber una `tag` que sea `tp1` en el ultimo commit.
+Tiene que haber una `tag` que se llame `tp1`. Ese commit es el que voy a corregir.
 
 Si crearon branches por feature o por ejercicio, no los borren. Asi puedo ver como estuvieron trabajando. Pero para este TP no es necesario que se vuelvan locos con GitFlow. Igual les recomiendo que lo practiquen si pueden porque para los demas TPs va a ser necesario.
 
