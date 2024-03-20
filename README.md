@@ -1,6 +1,6 @@
-# TP1 de Programacion Multimedial 4
+# TP1 de Programación Multimedial 4
 
-## Metodologia
+## Metodología
 
 Integrantes por equipo: 1
 
@@ -8,21 +8,21 @@ Se aprueba con:         6
 
 ### Objetivos
 
-- Refrescar lo que saben de JavaScript, y verificar que todos hallan llegado con un nivel minimo de manejo del lenguaje
-- Que aprendan a modelar problemas basicos usando tipos de datos en TypeScript
+- Refrescar lo que saben de JavaScript, y verificar que todos hallan llegado con un nivel mínimo de manejo del lenguaje
+- Que aprendan a modelar problemas básicos usando tipos de datos en TypeScript
 - Que se aclaren las dudas de los requerimientos que puedan sonarles ambiguos
 
 ### Comentarios Adicionales
 
-Estos ejercicios son "teoricos", por lo que estan un poco alejados de un problema "de la vida real". Para ese tipo de ejercicios vamos a tener el TP2.
+Estos ejercicios son "teóricos", por lo que están un poco alejados de un problema "de la vida real". Para ese tipo de ejercicios vamos a tener el TP2.
 
-Quiero darles la mayor libertad posible para que los resuelvan como quieran. Incluso pueden no usar lo que vimos en clase si saben otra forma. Lo unico que les pido es que:
+Quiero darles la mayor libertad posible para que los resuelvan como quieran. Incluso pueden no usar lo que vimos en clase si saben otra forma. Lo único que les pido es que:
 
-- Esten hechos en TypeScript
-- Todos los tipos de datos sean estaticos (o sea, que no haya ningun `any`)
-- Me justifiquen en el oral por que les parecio mejor opcion que lo que vimos en clase
+- Estén hechos en TypeScript
+- Todos los tipos de datos sean estáticos (o sea, que no haya ningún `any`)
+- Me justifiquen en el oral por que les pareció mejor opción que lo que vimos en clase
 
-Cada ejercicio esta relacionado a esta misma aplicacion. Pero no hace falta que creen una aplicacion entera que cumpla con todos los puntos. En cambio, cada ejercicio se considera aislado a los demas, a menos que el enunciado diga lo opuesto. Es parecido a lo que hicimos en clase con `Persona`, `Usuario`, etc.
+Cada ejercicio esta relacionado a esta misma aplicación. Pero no hace falta que creen una aplicación entera que cumpla con todos los puntos. En cambio, cada ejercicio se considera aislado a los demás, a menos que el enunciado diga lo opuesto. Es parecido a lo que hicimos en clase con `Persona`, `Usuario`, etc.
 
 Todos los ejercicios van a ser ejecutables en consola nada mas. Usando, por ejemplo, `ts-node`. No vamos a agregar ningun HTML o estilo a nada de esto. De nuevo, como lo que hicimos en clase.
 
