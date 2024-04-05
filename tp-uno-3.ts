@@ -1,80 +1,60 @@
-/* Los inversores se quejan que las tareas tardan mucho en cargarse. 
-Necesitamos adaptar el código anterior para que la carga se muestre 
-de forma asíncrona.
-Asumí que existe una función que devuelve el listado de tareas 
-después de 3 segundos. Podés usar el ejemplo que hicimos en clase.*/
-/*Lo primero que queremos es que se muestren en consola 
-todas las tareas que tiene pendientes el usuario.
-O sea, que aún no están terminadas. 
-Ordenarlas por prioridad (Alta, Media, Baja).*/
-interface Persona {
+/* Ahora los inversores nos piden ver las tareas que tiene asignada
+ cada persona. Así que necesitamos que, dado una persona, se muestren solo
+sus tareas de igual manera que en el punto 1. 
+¡OJO: apuntamos a tener millones de tareas en nuestra base de datos!.*/
+
+interface Cliente {
+    nombre: string,
+    tareas: TareaCliente[]
+}
+
+interface TareaCliente {
     tarea: string,
     prioridad: string,
     status: string
 }
 
-const personas: Persona[] = [
-    { tarea: "limpiar", prioridad: "baja", status: "done" },
-    { tarea: "hacer progra", prioridad: "alta", status: "doing" },
-    { tarea: "leer", prioridad: "media", status: "to-do" },
-    { tarea: "cocinar", prioridad: "alta", status: "doing" },
-    { tarea: "coser", prioridad: "baja", status: "to-do" }
+const clientes: Cliente[] = [
+    {
+        nombre: "Pepe",
+        tareas: [
+            { tarea: "limpiar", prioridad: "baja", status: "done" },
+            { tarea: "hacer progra", prioridad: "alta", status: "doing" },
+            { tarea: "leer", prioridad: "media", status: "to-do" }
+        ]
+    },
+    {
+        nombre: "Ana",
+        tareas: [
+            { tarea: "comprar víveres", prioridad: "media", status: "to-do" },
+            { tarea: "preparar presentación", prioridad: "alta", status: "doing" },
+            { tarea: "llamar a cliente", prioridad: "baja", status: "done" }
+        ]
+    },
+    {
+        nombre: "Lolo",
+        tareas: [
+            { tarea: "hacer ejercicio", prioridad: "alta", status: "to-do" },
+            { tarea: "estudiar", prioridad: "baja", status: "doing" },
+            { tarea: "cocinar", prioridad: "media", status: "to-do" },
+            { tarea: "limpiar", prioridad: "alta", status: "to-do" }
+        ]
+    }
 ];
 
-async function mostrarUsuario(user: Persona[]) {
-    const prioridadAlta: Persona[] = [];
-    const prioridadMedia: Persona[] = [];
-    const prioridadBaja: Persona[] = [];
-    try {
-        for (let i = 0; i < user.length; i++) {
-            const usuario = user[i];
-            if (usuario.status !== "done") {
-                if (usuario.prioridad === "alta") {
-                    prioridadAlta.push(usuario);
-                } else if (usuario.prioridad === "media") {
-                    prioridadMedia.push(usuario);
-                } else {
-                    prioridadBaja.push(usuario);
-                }
-            }
+function mostrarTareaPorCliente(nombre: string): TareaCliente[] {
+    const encontrarTarea: TareaCliente[] = [];
+    console.log(`Encontrando tareas de: ${nombre}`);
+    clientes.map(cliente => {
+        if (nombre === cliente.nombre) {
+            encontrarTarea.push(...cliente.tareas);
         }
-        tareaOrdenada(prioridadAlta);
-        tareaOrdenada(prioridadMedia);
-        tareaOrdenada(prioridadBaja);
-    }
-    catch (error) {
-        console.error("error de carga", error);
-    }
+    })
+    return encontrarTarea;
 }
 
-async function buscarTareas(): Promise<Persona[]> {
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    const tareasPendientes: Persona[] = [];
-    for (let i = 0; i < personas.length; i++) {
-        const persona = personas[i];
-        if (persona.status !== "done") {
-            tareasPendientes.push(persona);
-        }
-    }
+console.log(mostrarTareaPorCliente("Lolo"));
 
-    return tareasPendientes;
+function ordenarTareasPorPrioridad() {
+
 }
-
-function tareaOrdenada(tareas: Persona[]) {
-    for (let i = 0; i < tareas.length; i++) {
-        const tarea = tareas[i];
-        console.log(`Tarea: ${tarea.tarea} Prioridad: ${tarea.prioridad} Status: ${tarea.status}`);
-    }
-}
-
-(async () => {
-    try {
-        console.log("Cargando tareas...");
-        const tareas = await buscarTareas();
-        console.log("Tareas cargadas:");
-        mostrarUsuario(tareas);
-    } catch (error) {
-        console.error("Error al cargar las tareas:", error);
-    }
-})();
-
