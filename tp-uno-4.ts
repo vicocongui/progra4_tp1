@@ -1,7 +1,9 @@
-/* Ahora los inversores nos piden ver las tareas que tiene asignada
- cada persona. Así que necesitamos que, dado una persona, se muestren solo
-sus tareas de igual manera que en el punto 1. 
-¡OJO: apuntamos a tener millones de tareas en nuestra base de datos!.*/
+/*Los inversores rompieron la base de datos metiendo cualquier
+ texto en el campo de nombre de persona.Necesitamos una función
+  que valide si un texto es un nombre de persona válido o no.
+  Por ahora solo aceptemos que se escriba el nombre o el
+  nombre y apellido.*/
+
 interface Cliente {
     nombre: string,
     tareas: TareaCliente[];
@@ -59,10 +61,11 @@ function mostrarTareasPendientes(user: TareaCliente[]) {
 function buscarTareaPorCliente(users: Cliente[]): Map<string, Cliente> {
     const mapaUsuarios: Map<string, Cliente> = new Map();
     users.forEach(usuario => {
-        mapaUsuarios.set(usuario.nombre, usuario);//set pisa lo que estaba
+        mapaUsuarios.set(usuario.nombre, usuario);
     });
     return mapaUsuarios;
 }
+
 const usuariosMapa = buscarTareaPorCliente(clientes);
 const clienteBuscado = usuariosMapa.get("Lolo");
 
@@ -70,15 +73,8 @@ if (clienteBuscado) {
     console.log(`Tareas pendientes de ${clienteBuscado.nombre}:`);
     mostrarTareasPendientes(clienteBuscado.tareas);
 }
-/*function mostrarTareaPorCliente(nombre: string): TareaCliente[] {
-    const encontrarTarea: TareaCliente[] = [];
-    console.log(`Encontrando tareas de: ${nombre}`);
-    clientes.map(cliente => {
-        if (nombre === cliente.nombre) {
-            encontrarTarea.push(...cliente.tareas);
-        }
-    })
-    return encontrarTarea;
+
+function validoNombreDeCliente() {
+
 }
 
-console.log(mostrarTareaPorCliente("Lolo"));*/
