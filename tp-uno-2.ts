@@ -3,10 +3,77 @@ Necesitamos adaptar el código anterior para que la carga se muestre
 de forma asíncrona.
 Asumí que existe una función que devuelve el listado de tareas 
 después de 3 segundos. Podés usar el ejemplo que hicimos en clase.*/
-/*Lo primero que queremos es que se muestren en consola 
-todas las tareas que tiene pendientes el usuario.
-O sea, que aún no están terminadas. 
-Ordenarlas por prioridad (Alta, Media, Baja).*/
+/*funcion en clase
+async function delay(): Promise<delayTarea<Tarea>>  {
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    mostrarTareas(tareas)
+    return {tipo: "exito"};
+}*/
+interface Tarea {
+    nombre: string,
+    prioridad: 1 | 2 | 3,
+    status: boolean
+}
+
+//prioridad alta=1, baja=3
+const tareasDePersona: Tarea[] = [
+    { nombre: "limpiar", prioridad: 2, status: true },
+    { nombre: "hacer progra", prioridad: 1, status: true },
+    { nombre: "leer", prioridad: 2, status: false },
+    { nombre: "cocinar", prioridad: 3, status: true },
+    { nombre: "coser", prioridad: 3, status: false }
+];
+
+function mostrarTareasPendientes(user: Tarea[]) {
+    const tareasPendientes: Tarea[] = [];
+    for (let i = 0; i < user.length; i++) {
+        const tareas = user[i];//tarea actual
+        if (tareas.status) {
+            tareasPendientes.push(tareas);
+        }
+    }
+    tareasPendientes.sort((a, b) => a.prioridad - b.prioridad);
+
+    for (let i = 0; i < tareasPendientes.length; i++) {
+        const tarea = tareasPendientes[i];
+        console.log(`Tarea: ${tarea.nombre}, Prioridad: ${tarea.prioridad}`);
+    }
+}
+//mostrarTareasPendientes(tareasDePersona);
+
+async function esperoTiempo() {
+    console.log("Cargando tareas...");
+    const promesa = await new Promise<string>(resolve => {
+        setTimeout(() => {
+            mostrarTareasPendientes(tareasDePersona);
+            resolve("aca terminan las tareas");
+        }, 3000)
+    });
+    console.log(promesa);
+}
+
+
+esperoTiempo();
+/*
+prueba 1 async
+async function delay(): Promise<delayTarea<Tarea>> {
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    mostrarTareas(tareas)
+    return { tipo: "exito" };
+}*/
+
+/*
+prueba 2 async
+async function esperoTiempo() {
+    console.log("Cargando tareas...");
+    const promesa = await new Promise<string>(resolve => {
+        setTimeout(resolve, 3000)
+        mostrarTareasPendientes(tareasDePersona)
+    })
+}*/
+//promesa.then(valor => console.log(valor))
+/*
+1) PRIMER INTENTO
 interface Persona {
     tarea: string,
     prioridad: string,
@@ -76,5 +143,5 @@ function tareaOrdenada(tareas: Persona[]) {
     } catch (error) {
         console.error("Error al cargar las tareas:", error);
     }
-})();
+})();*/
 
