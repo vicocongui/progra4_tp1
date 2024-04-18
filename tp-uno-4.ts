@@ -74,7 +74,8 @@ if (clienteBuscado) {
     mostrarTareasPendientes(clienteBuscado.tareas);
 }
 
-function validoNombreDeCliente() {
-
+function validarNombreCliente(nombre: string): boolean {
+    const patron = /^[A-Za-z]+\s?([A-Za-z]+)?$/;
+    return patron.test(nombre);
 }
-
+console.log(validarNombreCliente("pepe perz"));
